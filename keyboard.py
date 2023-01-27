@@ -1,9 +1,12 @@
 from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
+import emoji
 
-ikb_menu = InlineKeyboardMarkup(row_width=1, 
+
+ikb_menu = InlineKeyboardMarkup(row_width=2, 
                                     inline_keyboard=[
                                         [
-                                            InlineKeyboardButton(text="Наша группа ВК!", url="https://vk.com/publicnbc")
+                                            InlineKeyboardButton(text="Наша группа ВК!" + emoji.emojize(":star:"), url="https://vk.com/publicnbc"),
+                                            InlineKeyboardButton(text="Наш телеграмм канал" + emoji.emojize(":star:"), url="https://t.me/newbusinesscomunity")
                                         ],
                                         [
                                             InlineKeyboardButton(text="Реклама", url="tg://user?id=1038663358")
