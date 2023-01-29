@@ -16,7 +16,7 @@ jobs:
         run: docker build . --file Dockerfile --tag jedaiok/pybot
 
       - name: Log in to registry
-        run: echo "${{secrets.DOCKER_PASSWORD}} | docker login -u jedaiok --password-stdin"
+        run: echo "${{ secrets.DOCKER_PASSWORD }} | docker login -u jedaiok --password-stdin"
 
       - name: Push image
         run: |
