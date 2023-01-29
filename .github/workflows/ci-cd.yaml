@@ -3,7 +3,7 @@ name: Update service
 on:
   push:
     branches:
-      - master
+      - main
 
 jobs:
   build_push_image:
