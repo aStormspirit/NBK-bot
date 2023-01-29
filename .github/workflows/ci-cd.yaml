@@ -27,25 +27,18 @@ jobs:
   update_service:
     needs: [build_push_image]
     runs-on: ubuntu-latest
-    #steps:
-    #  - name: Update service
-    #    uses: appleboy/ssh-action@master
-    #    env:
-    #      IMAGE: jedaiok/pybot:#{{ github.run_number }}
-    #      SERVICE: pybot
-    #    with:
-    #      host: ${{ secrets.HOST }}
-    #      username: ${{ secrets.USERNAME }}
-    #      key: ${{ secrets.PRIVATE_PASS }}
-    #      envs: IMAGE,SERVICE
-    #      script: docker service update --image $IMAGE $SERVICE
     steps:
-    - name: executing remote ssh commands using password
-      uses: appleboy/ssh-action@v0.1.7
-      with:
-        host: ${{ secrets.HOST }}
-        username: ${{ secrets.USERNAME }}
-        password: ${{ secrets.PRIVATE_PASS }}
-        script: whoami
+      - name: Update service
+        uses: appleboy/ssh-action@master
+        env:
+          IMAGE: jedaiok/pybot:#{{ github.run_number }}
+          SERVICE: pybot
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.PRIVATE_PASS }}
+          envs: IMAGE,SERVICE
+          script: docker service update --image $IMAGE $SERVICE
+
 
 
