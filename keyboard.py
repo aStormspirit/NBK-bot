@@ -9,7 +9,7 @@ ikb_menu = InlineKeyboardMarkup(row_width=2,
                                             InlineKeyboardButton(text="Наш ТГ канал" + emoji.emojize(":star:"), url="https://t.me/newbusinesscomunity")
                                         ],
                                         [
-                                            InlineKeyboardButton(text="Реклама", url="tg://user?id=1038663358")
+                                            InlineKeyboardButton(text="Реклама", url="tg://user?id=5805044876")
                                         ]
                                     ])
 
