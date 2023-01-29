@@ -1,0 +1,43 @@
+name: Update service
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build_push_image:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+      - uses: actions/checkout@v2
+
+      - name: Build image
+        run: docker build . --file Dockerfile --tag jedaiok/pybot
+
+      - name: Log in to registry
+        run: echo "${{secrets.DOCKER_PASSWORD}} | docker login -u suput --password-stdin"
+
+      - name: Push image
+        run: |
+          docker tag jedaiok/pybot jedaiok/pybot:latest
+          docker tag jedaiok/pybot jedaiok/pybot:${{ github.run_number }}
+          docker push jedaiok/pybot:latest
+          docker push jedaiok/pybot:${{ github.run_number }}
+  update_service:
+    needs: [build_push_image]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Update service
+        uses: appleboy/ssh-action@master
+        env:
+          IMAGE: jedaiok/pybot:#{{ github.run_number }}
+          SERVICE: pybot
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.PRIVATE_SSH_KEY }}
+          envs: IMAGE,SERVICE
+          script: docker service update --image $IMAGE $SERVICE
+
+
