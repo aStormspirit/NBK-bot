@@ -1,11 +1,11 @@
-import config
+import data.config as config
 import logging
 import emoji
 #from datetime import datetime
 #from datetime import timedelta
-from keyboard import ikb_menu
+from keyboard.keyboard import ikb_menu
 
-from filters import IsAdminFilter
+from filters.filters import IsAdminFilter
 from aiogram import Bot, Dispatcher, executor, types
 
 #logs

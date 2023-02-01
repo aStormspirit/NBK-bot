@@ -10,6 +10,9 @@ ikb_menu = InlineKeyboardMarkup(row_width=2,
                                         ],
                                         [
                                             InlineKeyboardButton(text="Реклама", url="tg://user?id=5805044876")
-                                        ]
+                                        ],
+                                                                                [
+                                            InlineKeyboardButton(text="Пожертвования", url="https://yoomoney.ru/fundraise/X9No0gI5wiQ.230201")
+                                        ],
                                     ])
 
