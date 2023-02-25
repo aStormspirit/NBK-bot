@@ -20,7 +20,7 @@ dp.filters_factory.bind(IsAdminFilter)
 @dp.message_handler(is_admin=True, commands=['ban'], commands_prefix="!/")
 async def cmd_ban(message: types.Message):
     """
-    This handler will be called when user answer !ban, and baned him
+    This handler will be called when user answer !ban
     """
     if not message.reply_to_message:
         await message.reply('Эта команда должна быть ответом на сообщение')
